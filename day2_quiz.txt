@@ -1,0 +1,728 @@
+#!/bin/bash
+
+# Devloped by sysadmins-admin
+
+# ***Please Note*** Exiting from the main menu and answering the last question, in this case question 35 will call the undo function.
+# Purpose: Writing study material to facilitate learning objectives
+
+# Disclaimer: Material used in this program originates from various Linux study materials
+# Disclaimer: This program is not intended to ensure student passes, but is intended to be used as an additional resource for 
+# study materials and familiarity with running complex scripts. Please feel free to modify/correct the code (and answers!)!
+
+# Only correct answers will update the score.
+
+export day2_score=0 # Establishing global variable to hold score for Day 2 Quiz
+
+# Function Purpose: Unset and undo any changes made to the user and system's environment
+# only after this function is called.
+function undo(){
+	day2_score=0 > /dev/null 2>&1 # Setting global score back to zero.
+	unset day2_score > /dev/null 2>&1 # Removing globally set value from memory
+}
+
+########################################################
+
+# Function Purpose: Displays Question 11 of 35 on Day 2 Quiz
+function day2_q11(){
+	clear # Clears the screen
+	echo "Question 11 of 35" # Displays question number
+	echo "What are the two types of pipes '|' discussed, and how are they created?" # Actual question asked on screen
+	echo " " # Additional space. Cleaner look. 
+
+PS3="Please select a choice above: "
+d2_q11_choices=("Unnamed pipe: Opened at time of creation, Named pipe / FIFO: Created with mkpipe or mknod q" "Unnamed pipe: Opened at time of creation, Named pipe / FIFO: Created with mkfifo or mknod p" "Unnamed pipe: Lasts forever, Named pipe / FIFO: Created with mkfifo or mknod p" "Unnamed pipe: Not created, Named pipe / FIFO: Created with mkfofi or mknod -s")	
+
+  select d2_q11_opt in "${d2_q11_choices[@]}"
+   do	 
+     case $d2_q11_opt in
+	
+	""Unnamed pipe: Opened at time of creation, Named pipe / FIFO: Created with mkpipe or mknod q"") # On Screen Option
+	echo "You chose ${d2_q11_choices[0]}"
+	echo "Your current score is $day2_score/35" # Prints user's score to screen.
+	echo " " # Additional space. Cleaner look. 
+	echo "Thank you for taking this quiz. I hope you enjoyed it!!!" # Positive message. 
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	undo # Calls undo function to clear changes stored in memory to include score. 
+	day2_quiz_main_menu # Returns user to Main Menu. 
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"Unnamed pipe: Opened at time of creation, Named pipe / FIFO: Created with mkfifo or mknod p") # On Screen Option
+	echo "You chose ${d2_q11_choices[1]}"
+	$((day2_score++)) > /dev/null 2>&1 # Updating global score(grade)
+	echo "Your current score is $day2_score/35" # Prints user's score to screen.
+	echo " " # Additional space. Cleaner look.
+	echo "Thank you for taking this quiz. I hope you enjoyed it!!!" # Positive message.
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	undo # Calls undo function to clear changes stored in memory to include score.
+	day2_quiz_main_menu # Returns user to Main Menu. 
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"Unnamed pipe: Lasts forever, Named pipe / FIFO: Created with mkfifo or mknod p") # On Screen Option
+	echo "You chose ${d2_q11_choices[2]}"
+	echo "Your current score is $day2_score/35" # Prints user's score to screen.
+	echo " " # Additional space. Cleaner look. 
+	echo "Thank you for taking this quiz. I hope you enjoyed it!!!" # Positive message. 
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	undo # Calls undo function to clear changes stored in memory to include score. 
+	day2_quiz_main_menu # Returns user to Main Menu. 
+	break # Do not run into next answer choice.
+	;; # Close case option	
+
+	"Unnamed pipe: Not created, Named pipe / FIFO: Created with mkfofi or mknod -s") # On Screen Option
+	echo "You chose ${d2_q11_choices[3]}"
+	echo "Your current score is $day2_score/35" # Prints user's score to screen.
+	echo " " # Additional space. Cleaner look. 
+	echo "Thank you for taking this quiz. I hope you enjoyed it!!!" # Positive message. 
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	undo # Calls undo function to clear changes stored in memory to include score. 
+	day2_quiz_main_menu # Returns user to Main Menu. 
+	break # Do not run into next answer choice.
+	;; # Close case option
+	
+	*) # Error handling and correction
+	echo "Please select a valid option"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input
+	clear # Clear the screen after. 
+	day2_q11 # Give the user a chance to answer the question again.
+	break # Error handling and correction
+	;;
+   esac
+done
+}
+
+# Function Purpose: Displays Question 10 of 35 on Day 2 Quiz
+function day2_q10(){
+	clear # Clears the screen
+	echo "Question 10 of 35" # Displays question number
+	echo "What is the purpose of a pipe '|'" # Actual question asked on screen
+	echo " " # Additional space. Cleaner look.
+
+PS3="Please select a choice above: "
+d2_q10_choices=("Starts background process" "Enumerates database" "Makes coffee" "Redirect output of one command to input of another command")	
+
+  select d2_q10_opt in "${d2_q10_choices[@]}"
+   do	 
+     case $d2_q10_opt in
+	
+	"Starts background process") # On Screen Option
+	echo "You chose ${d2_q10_choices[0]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q11 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"Enumerates database") # On Screen Option
+	echo "You chose ${d2_q10_choices[1]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q11 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"Makes coffee") # On Screen Option
+	echo "You chose ${d2_q10_choices[2]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q11 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option	
+
+	"Redirect output of one command to input of another command") # On Screen Option
+	echo "You chose ${d2_q10_choices[3]}"
+	$((day2_score++)) > /dev/null 2>&1 # Updating global score(grade)
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q11 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+	
+	*) # Error handling and correction
+	echo "Please select a valid option"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input
+	clear # Clear the screen after. 
+	day2_q10 # Give the user a chance to answer the question again.
+	break # Error handling and correction
+	;;
+   esac
+done
+}
+
+# Function Purpose: Displays Question 9 of 35 on Day 2 Quiz
+function day2_q9(){
+	clear # Clears the screen
+	echo "Question 9 of 35" # Displays question number
+	echo "Match the Standard Stream and its file descriptor." # Actual question asked on screen
+	echo " " # Additional space. Cleaner look.
+
+PS3="Please select a choice above: "
+d2_q9_choices=("STDIN: 0, STDOUT: 2, STDERR: 1" "STDIN: 0, STDOUT: 1, STDERR: 2" "STDIN: 2, STDOUT: 1, STDERR: 3" "What's the answer?")	
+
+  select d2_q9_opt in "${d2_q9_choices[@]}"
+   do	 
+     case $d2_q9_opt in
+	
+	"STDIN: 0, STDOUT: 2, STDERR: 1") # On Screen Option
+	echo "You chose ${d2_q9_choices[0]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q10 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"STDIN: 0, STDOUT: 1, STDERR: 2") # On Screen Option
+	echo "You chose ${d2_q9_choices[1]}"
+	$((day2_score++)) > /dev/null 2>&1 # Updating global score(grade)
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q10 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"STDIN: 2, STDOUT: 1, STDERR: 3") # On Screen Option
+	echo "You chose ${d2_q9_choices[2]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q10 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"What's the answer?") # On Screen Option
+	echo "You chose ${d2_q9_choices[3]}"
+	echo " " # Additional space. Cleaner look.
+	echo "Nice Try ;) Looks like this isn't the answer..." # Funny easter egg for user to keep interest
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q9 # Restart the question.
+	break # Do not run into next answer choice.
+	;; # Close case option	
+	
+	*) # Error handling and correction
+	echo "Please select a valid option"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input
+	clear # Clear the screen after. 
+	day2_q9 # Give the user a chance to answer the question again.
+	break # Error handling and correction
+	;;
+   esac
+done
+}
+
+# Function Purpose: Displays Question 8 of 35 on Day 2 Quiz
+function day2_q8(){
+	clear # Clears the screen
+	echo "Question 8 of 35" # Displays question number
+	echo "Which definition is correct?" # Actual question asked on screen
+	echo " " # Additional space. Cleaner look.
+
+PS3="Please select a choice above: "
+d2_q8_choices=("/etc/bash.bashrc applies only to interactive BASH shells" "/etc/profile does not apply to Bourne and BASH compatible shells" "~/.bashrc applies only to BASH login shells" "~/.profile applies to only non-login shells")	
+
+  select d2_q8_opt in "${d2_q8_choices[@]}"
+   do	 
+     case $d2_q8_opt in
+	
+	"/etc/bash.bashrc applies only to interactive BASH shells") # On Screen Option
+	echo "You chose ${d2_q8_choices[0]}"
+	$((day2_score++)) > /dev/null 2>&1 # Updating global score(grade)
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q9 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+	
+	"/etc/profile does not apply to Bourne and BASH compatible shells") # On Screen Option
+	echo "You chose ${d2_q8_choices[1]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q9 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"~/.bashrc applies only to BASH login shells") # On Screen Option
+	echo "You chose ${d2_q8_choices[2]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q9 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"~/.profile applies to only non-login shells") # On Screen Option
+	echo "You chose ${d2_q8_choices[3]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q9 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option	
+	
+	*) # Error handling and correction
+	echo "Please select a valid option"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input
+	clear # Clear the screen after. 
+	day2_q8 # Give the user a chance to answer the question again.
+	break # Error handling and correction
+	;;
+   esac
+done
+}
+
+# Function Purpose: Displays Question 7 of 35 on Day 2 Quiz
+function day2_q7(){
+	clear # Clears the screen
+	echo "Question 7 of 35" # Displays question number
+	echo "When viewing output from "'echo $-'", how do you determine if the shell is interactive or not?" # Actual question asked on screen
+	echo " " # Additional space. Cleaner look.
+
+PS3="Please select a choice above: "
+d2_q7_choices=("h" "m" "B" "i" "H")	
+
+  select d2_q7_opt in "${d2_q7_choices[@]}"
+   do	 
+     case $d2_q7_opt in
+	
+	"h") # On Screen Option
+	echo "You chose ${d2_q7_choices[0]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q8 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"m") # On Screen Option
+	echo "You chose ${d2_q7_choices[1]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q8 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"B") # On Screen Option
+	echo "You chose ${d2_q7_choices[2]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q8 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option	
+
+	"i") # On Screen Option
+	echo "You chose ${d2_q7_choices[3]}"
+	$((day2_score++)) > /dev/null 2>&1 # Updating global score(grade)
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q8 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"H") # On Screen Option
+	echo "You chose ${d2_q7_choices[4]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q8 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+	
+	*) # Error handling and correction
+	echo "Please select a valid option"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input
+	clear # Clear the screen after. 
+	day2_q7 # Give the user a chance to answer the question again.
+	break # Error handling and correction
+	;;
+   esac
+done
+}
+
+# Function Purpose: Displays Question 6 of 35 on Day 2 Quiz
+function day2_q6(){
+	clear # Clears the screen
+	echo "Question 6 of 35" # Displays question number
+	echo "Of the two BASH Modes listed, which answer choice is correct?" # Actual question asked on screen
+	echo " " # Additional space. Cleaner look.
+
+PS3="Please select a choice above: "
+d2_q6_choices=("Interactive: Will not read commands from user input on tty. $PS1 prompt variable is set. Non-Interactive: Shells running scripts, Will not run in background." "Interactive: Reads commands from user input on tty. $PS1 prompt variable is set. Non-Interactive: Shells running scripts, Can run in background.")	
+
+  select d2_q6_opt in "${d2_q6_choices[@]}"
+   do	 
+     case $d2_q6_opt in
+	
+	"Interactive: Will not read commands from user input on tty. $PS1 prompt variable is set. Non-Interactive: Shells running scripts, Will not run in background.") # On Screen Option
+	echo "You chose ${d2_q6_choices[0]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q7 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"Interactive: Reads commands from user input on tty. $PS1 prompt variable is set. Non-Interactive: Shells running scripts, Can run in background.") # On Screen Option
+	echo "You chose ${d2_q6_choices[1]}"
+	$((day2_score++)) > /dev/null 2>&1 # Updating global score(grade)
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q7 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+	
+	*) # Error handling and correction
+	echo "Please select a valid option"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input
+	clear # Clear the screen after. 
+	day2_q6 # Give the user a chance to answer the question again.
+	break # Error handling and correction
+	;;
+   esac
+done
+}
+
+# Function Purpose: Displays Question 5 of 35 on Day 2 Quiz
+function day2_q5(){
+	clear # Clears the screen
+	echo "Question 5 of 35" # Displays question number
+	echo "T/F Which answer is true regarding the two shell types listed?" # Actual question asked on screen
+	echo " " # Additional space. Cleaner look.
+
+PS3="Please select a choice above: "
+d2_q5_choices=("Login: shopt login_shell, echo $0(shows -), login via SSH, su -. Non-Login: Shell invoked from another shell, Started by a program without a login." "Login: shopt login_shell, echo $0(shows -), login via SSH, su . Non-Login: Shell invoked from another shell, Started by a program with a login.")	
+
+  select d2_q5_opt in "${d2_q5_choices[@]}"
+   do	 
+     case $d2_q5_opt in
+	
+	"Login: shopt login_shell, echo $0(shows -), login via SSH, su -. Non-Login: Shell invoked from another shell, Started by a program without a login.") # On Screen Option
+	echo "You chose ${d2_q5_choices[0]}"
+	$((day2_score++)) > /dev/null 2>&1 # Updating global score(grade)
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q6 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option	
+	
+	"Login: shopt login_shell, echo $0(shows -), login via SSH, su . Non-Login: Shell invoked from another shell, Started by a program with a login.") # On Screen Option
+	echo "You chose ${d2_q5_choices[1]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q6 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+	
+	*) # Error handling and correction
+	echo "Please select a valid option"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input
+	clear # Clear the screen after. 
+	day2_q5 # Give the user a chance to answer the question again.
+	break # Error handling and correction
+	;;
+   esac
+done
+}
+
+# Done move to next question ^
+# Function Purpose: Displays Question 4 of 35 on Day 2 Quiz
+function day2_q4(){
+	clear # Clears the screen
+	echo "Question 4 of 35" # Displays question number
+	echo "Match the command to its definition." # Actual question asked on screen
+	echo " " # Additional space. Cleaner look.
+
+PS3="Please select a choice above: "
+d2_q4_choices=("Type: Evaluate BASH Order of Evaluation. type -a: Shows all instances of command in BASH order of evaluation. Hash: Displays BASH's hash table (hash -r - reset hash table)" "Type: Evaluate SH Order of Evaluation. type -a: Shows all instances of command in KSH order of evaluation. Hash: Adds BASH's routing table (hash -r - add new hash table)")	
+
+  select d2_q4_opt in "${d2_q4_choices[@]}"
+   do	 
+     case $d2_q4_opt in
+
+	"Type: Evaluate BASH Order of Evaluation. type -a: Shows all instances of command in BASH order of evaluation. Hash: Displays BASH's hash table (hash -r - reset hash table)")# On Screen Option
+	echo "You chose ${d2_q4_choices[0]}"
+	$((day2_score++)) > /dev/null 2>&1 # Updating global score(grade)
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q5 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"Type: Evaluate SH Order of Evaluation. type -a: Shows all instances of command in KSH order of evaluation. Hash: Adds BASH's routing table (hash -r - add new hash table)") # On Screen Option
+	echo "You chose ${d2_q4_choices[2]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q5 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+	
+	*) # Error handling and correction
+	echo "Please select a valid option"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input
+	clear # Clear the screen after. 
+	day2_q4 # Give the user a chance to answer the question again.
+	break # Error handling and correction
+	;;
+   esac
+done
+}
+
+# Done move to next question ^
+# Function Purpose: Displays Question 3 of 35 on Day 2 Quiz
+function day2_q3(){
+	clear # Clears the screen
+	echo "Question 3 of 35" # Displays question number
+	echo "How are order are commands executed in BASH?" # Actual question asked on screen
+	echo " " # Additional space. Cleaner look.
+
+PS3="Please select a choice above: "
+d2_q3_choices=("Global Functions, Third-party Commands, Routing table, Main Variable" "Shell Functions, Builtin commands, Routing table, Path Variable" "Shell Functions, Builtin commands, Routing table, Path Variable" "Shell Functions, Builtin commands, Hash table, Path Variable")	
+
+  select d2_q3_opt in "${d2_q3_choices[@]}"
+   do	 
+     case $d2_q3_opt in
+	
+	"Global Functions, Third-party Commands, Routing table, Main Variable") # On Screen Option
+	echo "You chose ${d2_q3_choices[0]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q4 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option	
+
+	"Shell Functions, Builtin commands, Routing table, Path Variable") # On Screen Option
+	echo "You chose ${d2_q3_choices[1]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q4 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"Shell Functions, Builtin commands, Routing table, Path Variable") # On Screen Option
+	echo "You chose ${d2_q3_choices[2]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q4 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"Shell Functions, Builtin commands, Hash table, Path Variable") # On Screen Option
+	echo "You chose ${d2_q3_choices[3]}"
+	$((day2_score++)) > /dev/null 2>&1 # Updating global score(grade)
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q4 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+	
+	*) # Error handling and correction
+	echo "Please select a valid option"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input
+	clear # Clear the screen after. 
+	day2_q3 # Give the user a chance to answer the question again.
+	break # Error handling and correction
+	;;
+   esac
+done
+}
+
+# Done move to next question ^
+# Function Purpose: Displays Question 2 of 35 on Day 2 Quiz
+function day2_q2(){
+	clear # Clears the screen
+	echo "Question 2 of 35" # Displays question number
+	echo "What are three types of shell expansions performed in BASH?" # Actual question asked on screen
+	echo " " # Additional space. Cleaner look.
+
+PS3="Please select a choice above: "
+d2_q2_choices=("Brace expansion, deletion, Word Splitting" "Brace expansion, tilde expansion, filename expansion" "Filename expansion, Command Substitution, Easy Division" "BASH only does Parameter and Variable expansion")	
+
+  select d2_q2_opt in "${d2_q2_choices[@]}"
+   do	 
+     case $d2_q2_opt in
+	
+	"Brace expansion, deletion, Word Splitting") # On Screen Option
+	echo "You chose ${d2_q2_choices[0]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q3 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option	
+	
+	"Brace expansion, tilde expansion, filename expansion") # On Screen Option
+	echo "You chose ${d2_q2_choices[1]}"
+	$((day2_score++)) > /dev/null 2>&1 # Updating global score(grade)
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q3 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"Filename expansion, Command Substitution, Easy Division") # On Screen Option
+	echo "You chose ${d2_q2_choices[2]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q3 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	"BASH only does Parameter and Variable expansion")
+	echo "You chose ${d2_q2_choices[3]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input.
+	day2_q3 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option	
+
+	*) # Error handling and correction
+	echo "Please select a valid option"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input
+	clear # Clear the screen after. 
+	day2_q2 # Give the user a chance to answer the question again.
+	break # Error handling and correction
+	;;
+	
+   esac
+done
+}
+
+# Done move to next question ^
+# Function Purpose: Displays Question 1 of 35 on Day 2 Quiz
+function day2_q1(){
+	echo "Question 1 of 35" # Displays question number
+	echo "Of the choices below, which best describes the BASH Order of Evaluation?" # Actual question asked on screen
+	echo " " # Additional space. Cleaner look.
+
+PS3="Please select a choice above: "
+d2_q1_choices=("The shell reads commands from a file or terminal, lexical analysis is performed, parsing starts" "The shell reads commands from a file or terminal, parsing starts, lexical analysis is performed" "Parsing starts, lexical analysis is performed, the shell reads commands from a file or terminal" "There is no BASH Order of Evaluation")
+	select d2_q1_opt in "${d2_q1_choices[@]}"
+   do	
+   
+     case $d2_q1_opt in
+	
+	"The shell reads commands from a file or terminal, lexical analysis is performed, parsing starts") # On Screen Option
+	echo "You chose ${d2_q1_choices[0]}"
+	$((day2_score++)) > /dev/null 2>&1 # Updating global score(grade)
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input
+	day2_q2 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+	
+	"The shell reads commands from a file or terminal, parsing starts, lexical analysis is performed") # On Screen Option
+	echo "You chose ${d2_q1_choices[1]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input	
+	day2_q2 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option	
+
+	"Parsing starts, lexical analysis is performed, the shell reads commands from a file or terminal") # On Screen Option
+	echo "You chose ${d2_q1_choices[2]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input
+	day2_q2 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+	
+	"There is no BASH Order of Evaluation") # On Screen Option
+	echo "You chose ${d2_q1_choices[3]}"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input	day2_q2 # Move to next question
+	day2_q2 # Move to next question
+	break # Do not run into next answer choice.
+	;; # Close case option
+
+	*) # Error handling and correction
+	  echo "Please select a valid option"
+	  echo " " # Additional space. Cleaner look.
+	  read -p "Press <ENTER> to continue " # Waits for user input
+	  clear # Clear the screen	
+	  day2_q1 # Give user chance to answer question by recalling the question
+	  break # Error handling and correction
+	;; # Close case option
+    esac
+done	
+}
+
+# Function Purpose: Starts Day 2 Quiz
+function day2_quiz(){
+	clear # Clears the screen	
+	echo "Day 2 Quiz Started. Good luck!!!" # Positive message.
+	day2_q1 # Calls question 1 and starts quiz.
+}
+
+# Function Purpose: Provide useful links to study material.
+function study_material(){
+	clear # Clears screen
+	echo "Here are the links to the study material"
+	echo "" # Additional space. Cleaner look.
+	echo "Courtesy of sysadmins-admin"
+	echo "github.com/sysadmins-admin"
+	echo " " # Additional space. Cleaner look.
+	read -p "Press <ENTER> to continue " # Waits for user input
+	day2_quiz_main_menu # Return to Main Menu
+}
+
+# Function Purpose: Provides an interactive and user-friendly interface to the program.
+function day2_quiz_main_menu(){
+	clear # Clears the screen
+	echo "===DAY 2 QUIZ MAIN MENU==="
+
+	PS3="Please select an option above: "
+	# Establish an array for menu options
+	day2_quiz_menu_options=("Start Day 2 Quiz" "Study Material" "Leave Quiz")
+	select opt in "${day2_quiz_menu_options[@]}"
+   do	
+   
+     case $opt in
+	
+	"Start Day 2 Quiz") # On Screen Option
+	echo "Day 2 Quiz"
+	day2_quiz	# Begin quiz 
+			# Different named function to start
+			# the quiz. "Day 2 Quiz" only selects this option.
+	break # Do not run into next choice.
+	;; # Close case option
+
+	
+	"Study Material") # On Screen Option
+	study_material # Call study_material function
+	break # Do not run into next answer choice.
+	;; # Close case option	
+
+	"Leave Quiz") # On Screen Option
+	echo "Exiting quiz ..."
+	undo # Calls undo script
+	read -p "Press <ENTER> to continue " # Waits for user input
+	if [ ./quiz_engine.* ]  > /dev/null 2>&1 # Check to see if quiz engine exists in current directory 
+		then
+		clear # Clear screen on exit
+		. ./quiz_engine.* # Return to quiz engine if it exists in current directory
+		else
+		   clear # Clear screen on exit
+		   break # If it doesn't exist, exit quiz anyway
+	fi
+	break # Exit script
+	;; # Close case option
+	
+	*) # Error handling and correction
+	  echo "Please select a valid option"
+	  echo " " # Additional space. Cleaner look.
+	  read -p "Press <ENTER> to continue " # Waits for user input
+	  day2_quiz_main_menu # Returns user to Main Menu
+	  break # Error handling and correction
+	;; # Close case option
+    esac
+done
+}
+day2_quiz_main_menu
+
+# Devloped by sysadmins-admin

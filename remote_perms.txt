@@ -1,0 +1,22 @@
+#!/bin/bash
+# The script is using a bash shell to help ensure script runs as intended.
+
+# Function Purpose: Connects to specified host, verifies the connection, and grabs octal file permissions.
+function get_connected(){
+	# Connect to the host (localhost in this case) over ssh
+	exec 3<>/dev/tcp/localhost/22
+	
+	# Grab dynamic PID of connection and store it in $sshd_pid
+	sshd_pid=$(ps -ef | grep -v grep | grep ssh | grep accepted | awk '{print $2}')
+
+        # Change directory to proc/ssh successful connection/file descriptor directory
+	cd /proc/"$sshd_pid"/fd
+
+	filename=$(ls -l | grep pipe | awk '{print $9}') # Selects dynamic filename
+	octal=$(stat -c "%a" "$filename") # Convert octal value of file permissions
+
+	echo "$octal is the file permissions" # Echo octal file permissions
+}
+get_connected
+
+# Devloped by sysadmins-admin
